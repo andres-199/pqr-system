@@ -1,9 +1,11 @@
 <!--Toolbar-->
 <mat-toolbar color="primary">{{ title | uppercase }}</mat-toolbar>
 
-<mat-sidenav-container>
+<mat-sidenav-container class="main-container">
   <!--Side Content-->
-  <mat-sidenav mode="side" opened>Menu de Navegación</mat-sidenav>
+  <mat-sidenav mode="side" opened>
+    <app-menu></app-menu>
+  </mat-sidenav>
 
   <!--Content-->
   <mat-sidenav-content>
