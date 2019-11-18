@@ -11,8 +11,7 @@ export interface MenuItem {
 
 @Component({
   selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.css']
+  templateUrl: './menu.component.html'
 })
 export class MenuComponent implements OnInit {
   items: MenuItem[]
@@ -33,8 +32,8 @@ export class MenuComponent implements OnInit {
         routerLink: ['pqr/types']
       },
       { label: 'Predios', icon: 'post_add', routerLink: ['predios'] },
-      { label: 'Terceros', icon: 'people', routerLink: ['terceros'] },
-      { label: 'Zonas', icon: 'streetview', routerLink: ['zonas'] }
+      { label: 'Profesionales', icon: 'people', routerLink: ['terceros'] },
+      { label: 'Campos', icon: 'streetview', routerLink: ['zonas'] }
     ]
   }
 }

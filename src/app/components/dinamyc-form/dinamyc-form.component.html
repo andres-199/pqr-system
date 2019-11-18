@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>
+  {{ title }}
+  <i class="material-icons" *ngIf="isDelete">
+    warning
+  </i>
+</h1>
+
+<div mat-dialog-content>
+  <ng-container *ngIf="!isDelete; else is_delete">
+    <div *ngFor="let field of formFields">
+      <ng-container
+        *ngTemplateOutlet="
+          field.type === 'textArea' ? textArea : input;
+          context: { $implicit: field }
+        "
+      ></ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<!--actions-->
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Aceptar</button>
+</div>
+
+<!--templates-->
+<ng-template #input let-field>
+  <mat-form-field class="full-width">
+    <input
+      matInput
+      [name]="field.name"
+      [(ngModel)]="data[field.name]"
+      [placeholder]="field.label"
+    />
+  </mat-form-field>
+</ng-template>
+
+<ng-template #textArea let-field>
+  <mat-form-field class="full-width">
+    <textarea
+      matInput
+      [name]="field.name"
+      [(ngModel)]="data[field.name]"
+      [placeholder]="field.label"
+    ></textarea>
+  </mat-form-field>
+</ng-template>
+
+<ng-template #is_delete>
+  <span>
+    Está seguro que desea eliminar el registro?
+  </span>
+</ng-template>
