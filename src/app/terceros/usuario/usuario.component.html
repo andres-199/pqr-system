@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>
+  GESTIÓN DE USUARIO
+</h1>
+
+<div mat-dialog-content>
+  <p>
+    <mat-chip-list>
+      <mat-chip [disabled]="!data.Usuario.enabled">
+        {{ data.nombres + ' ' + data.apellidos }}
+      </mat-chip>
+
+      <mat-slide-toggle [(ngModel)]="data.Usuario.enabled">
+        {{ data.Usuario.enabled ? 'habilitado' : 'Deshabilitado' }}
+      </mat-slide-toggle>
+    </mat-chip-list>
+  </p>
+
+  <mat-form-field>
+    <mat-label>Rol de Usuario</mat-label>
+    <mat-select
+      name="rol_id"
+      [disabled]="!data.Usuario.enabled"
+      [(ngModel)]="data.Usuario.rol_id"
+    >
+      <mat-option *ngFor="let rol of roles" [value]="rol.value">
+        {{ rol.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input
+      matInput
+      name="username"
+      placeholder="Nombre de Usuario "
+      [(ngModel)]="data.Usuario.username"
+      disabled
+    />
+  </mat-form-field>
+</div>
+
+<!--actions-->
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button (click)="onAccept()" cdkFocusInitial>Aceptar</button>
+</div>

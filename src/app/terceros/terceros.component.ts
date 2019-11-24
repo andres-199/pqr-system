@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import {
   FormField,
-  Col
+  Col,
+  MenuOption
 } from '../components/dinamyc-crud/dinamyc-crud.component'
+import { MatDialog } from '@angular/material/dialog'
+import { UsuarioComponent } from './usuario/usuario.component'
 
 @Component({
   selector: 'app-terceros',
@@ -34,9 +37,23 @@ export class TercerosComponent implements OnInit {
     { name: 'telefono', label: 'Telefono' }
   ]
 
-  public origin = 'profesionales'
+  public origin = 'profesionales/crud'
 
-  constructor() {}
+  public menuOptions: MenuOption[] = [
+    {
+      label: 'Usuario',
+      icon: 'supervised_user_circle',
+      handler: (data: any) => {
+        this.onClickUser(data)
+      }
+    }
+  ]
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {}
+
+  onClickUser(data: any) {
+    this.dialog.open(UsuarioComponent, { data, minWidth: 400 })
+  }
 }

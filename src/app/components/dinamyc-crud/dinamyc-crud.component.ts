@@ -17,6 +17,12 @@ export interface FormField {
   type?: 'text' | 'textArea'
 }
 
+export interface MenuOption {
+  icon: string
+  label: string
+  handler: (data: any) => any
+}
+
 @Component({
   selector: 'app-dinamyc-crud',
   templateUrl: './dinamyc-crud.component.html',
@@ -31,6 +37,8 @@ export class DinamycCrudComponent implements OnInit {
   public formFields: FormField[] = []
   @Input()
   public origin = ''
+  @Input()
+  public menuOptions: MenuOption[]
 
   public dataSource: any
 
@@ -61,7 +69,9 @@ export class DinamycCrudComponent implements OnInit {
     })
 
     ref.afterClosed().subscribe(_data => {
-      this.update(_data)
+      if (_data) {
+        this.update(_data)
+      }
     })
   }
 

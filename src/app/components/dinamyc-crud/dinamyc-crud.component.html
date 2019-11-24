@@ -24,6 +24,7 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
+
         <!--...-->
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="onEdit(data)">
@@ -34,7 +35,16 @@
             <mat-icon>delete</mat-icon>
             <span>Eliminar</span>
           </button>
+
+          <!--extra options-->
+          <ng-container *ngFor="let menuOption of menuOptions">
+            <button mat-menu-item (click)="menuOption.handler(data)">
+              <mat-icon>{{ menuOption.icon }}</mat-icon>
+              <span>{{ menuOption.label }}</span>
+            </button>
+          </ng-container>
         </mat-menu>
+
         <!--/menú de opciones-->
       </td>
     </ng-container>
