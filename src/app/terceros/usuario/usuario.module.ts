@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatSelectModule } from '@angular/material/select'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [UsuarioComponent],
@@ -19,7 +20,8 @@ import { MatSelectModule } from '@angular/material/select'
     MatChipsModule,
     MatDialogModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   exports: [UsuarioComponent]
 })

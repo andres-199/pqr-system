@@ -21,6 +21,7 @@
       name="rol_id"
       [disabled]="!data.Usuario.enabled"
       [(ngModel)]="data.Usuario.rol_id"
+      required
     >
       <mat-option *ngFor="let rol of roles" [value]="rol.value">
         {{ rol.label }}
@@ -42,5 +43,12 @@
 <!--actions-->
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-button (click)="onAccept()" cdkFocusInitial>Aceptar</button>
+  <button
+    mat-button
+    [disabled]="!data.Usuario.rol_id"
+    (click)="onAccept()"
+    cdkFocusInitial
+  >
+    Aceptar
+  </button>
 </div>
