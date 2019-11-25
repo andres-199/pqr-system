@@ -14,11 +14,11 @@ export class LoginService {
   }
 
   public get user(): any {
-    return localStorage.getItem('user')
+    return JSON.parse(localStorage.getItem('user'))
   }
 
   public set user(value: any) {
-    localStorage.setItem('user', value)
+    localStorage.setItem('user', JSON.stringify(value))
   }
 
   constructor(private router: Router, private http: HttpClient) {}

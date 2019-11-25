@@ -11,7 +11,7 @@
   height: 100%;
   background-color: transparent;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .login-panel {

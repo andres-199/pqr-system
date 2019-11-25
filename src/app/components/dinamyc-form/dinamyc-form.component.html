@@ -25,10 +25,32 @@
 </div>
 
 <!--templates-->
+<ng-template #datePicker let-field>
+  <mat-label>{{ field.label }}</mat-label>
+ <!--  <mat-form-field class="full-width">
+    <input
+      (click)="picker.open()"
+      (focus)="picker.open()"
+      [(ngModel)]="data[field.name]"
+      [matDatepicker]="picker"
+      [name]="field.name"
+      matInput
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->
+  <mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+</ng-template>
+
 <ng-template #input let-field>
   <mat-form-field class="full-width">
     <input
       matInput
+      [type]="field.type || 'text'"
       [name]="field.name"
       [(ngModel)]="data[field.name]"
       [placeholder]="field.label"

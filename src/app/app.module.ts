@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { FooterModule } from './components/footer/footer.module'
 import { MatIconModule } from '@angular/material/icon'
 import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatMomentDateModule } from '@angular/material-moment-adapter'
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import { MatTooltipModule } from '@angular/material/tooltip'
     HttpClientModule,
     FooterModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMomentDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

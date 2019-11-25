@@ -1,27 +1,30 @@
 <h1 mat-dialog-title>REGISTRO DE PQR</h1>
 
 <div mat-dialog-content>
-  <ng-container *ngIf="!isDelete; else is_delete">
-    <div>
-      <ng-container
-        *ngTemplateOutlet="
-          dropdown;
-          context: {
-            $implicit: { name: 'campo_id', label: 'Campo', options: campos }
-          }
-        "
-      ></ng-container>
-    </div>
-  </ng-container>
+  <div *ngFor="let field of formFields">
+    <ng-container
+      *ngTemplateOutlet="
+        field.type === 'dropdown'
+          ? dropdown
+          : field.type === 'date'
+          ? datePicker
+          : field.type === 'textArea'
+          ? textArea
+          : input;
+        context: { $implicit: field }
+      "
+    ></ng-container>
+  </div>
 </div>
 
 <!--actions-->
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-button (click)="onaccept()" cdkFocusInitial>Aceptar</button>
+  <button mat-button (click)="onAccept()" cdkFocusInitial>Aceptar</button>
 </div>
 
 <!--templates-->
+<!--input-->
 <ng-template #input let-field>
   <mat-form-field class="full-width">
     <input
@@ -32,7 +35,7 @@
     />
   </mat-form-field>
 </ng-template>
-
+<!--textarea-->
 <ng-template #textArea let-field>
   <mat-form-field class="full-width">
     <textarea
@@ -43,14 +46,35 @@
     ></textarea>
   </mat-form-field>
 </ng-template>
-
+<!--dropdown-->
 <ng-template #dropdown let-field>
+
   <mat-form-field class="full-width">
     <mat-label>{{ field.label }}</mat-label>
     <mat-select [name]="field.name" [(ngModel)]="pqr[field.name]">
-      <mat-option *ngFor="let option of field.options" [value]="option.value">
+      <mat-option
+        *ngFor="let option of this[field.options] | async"
+        [value]="option.value"
+      >
         {{ option.label }}
       </mat-option>
     </mat-select>
+  </mat-form-field>
+</ng-template>
+
+<!--Date Picker-->
+<ng-template #datePicker let-field>
+  <mat-label>{{ field.label }}</mat-label>
+  <mat-form-field class="full-width">
+    <input
+      (click)="picker.open()"
+      (focus)="picker.open()"
+      [(ngModel)]="pqr[field.name]"
+      [matDatepicker]="picker"
+      [name]="field.name"
+      matInput
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 </ng-template>

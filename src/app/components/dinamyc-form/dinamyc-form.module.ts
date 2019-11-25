@@ -5,6 +5,8 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog'
 import { FormsModule } from '@angular/forms'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+
 
 @NgModule({
   declarations: [DinamycFormComponent],
@@ -13,7 +15,8 @@ import { FormsModule } from '@angular/forms'
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule
   ],
   exports: [DinamycFormComponent]
 })

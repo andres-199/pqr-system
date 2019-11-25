@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { FormModule } from '../form/form.module'
 import { FormComponent } from '../form/form.component'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatTableExporterModule } from 'mat-table-exporter'
 
 const routes: Routes = [{ path: '', component: ListComponent }]
 
@@ -26,7 +27,8 @@ const routes: Routes = [{ path: '', component: ListComponent }]
     MatTableModule,
     MatPaginatorModule,
     FormModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableExporterModule
   ],
   entryComponents: [FormComponent]
 })

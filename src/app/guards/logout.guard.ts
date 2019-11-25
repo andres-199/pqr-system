@@ -3,7 +3,8 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree
+  UrlTree,
+  Router
 } from '@angular/router'
 import { Observable } from 'rxjs'
 import { LoginService } from '../login/login.service'
@@ -12,7 +13,7 @@ import { LoginService } from '../login/login.service'
   providedIn: 'root'
 })
 export class LogoutGuard implements CanActivate {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -22,6 +23,12 @@ export class LogoutGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return !this.loginService.isLogedIn
+    const isLogedIn = this.loginService.isLogedIn
+
+    if (isLogedIn) {
+      this.router.navigate(['/'])
+    }
+
+    return !isLogedIn
   }
 }

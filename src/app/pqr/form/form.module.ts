@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
 import { CrudService } from 'src/app/components/dinamyc-crud/crud.service'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatSnackBarModule } from '@angular/material'
 
 @NgModule({
   declarations: [FormComponent],
@@ -16,7 +18,9 @@ import { CrudService } from 'src/app/components/dinamyc-crud/crud.service'
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatSnackBarModule
   ],
   exports: [FormComponent],
   providers: [CrudService]

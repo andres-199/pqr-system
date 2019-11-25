@@ -10,7 +10,12 @@
   </button>
 </div>
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+  <table
+    matTableExporter
+    #exporter="matTableExporter"
+    mat-table
+    [dataSource]="dataSource"
+  >
     <!--template cols-->
     <ng-container [matColumnDef]="col.field" *ngFor="let col of cols">
       <th mat-header-cell *matHeaderCellDef>{{ col.header }}</th>
@@ -59,4 +64,23 @@
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
   ></mat-paginator>
+</div>
+
+<div class="container row col">
+  <button
+    style="background-color: #217346 ; color:#ffffff"
+    mat-raised-button
+    color="succes"
+    (click)="exporter.exportTable('xlsx', exportConfig)"
+  >
+    Exportar Excel
+  </button>
+
+  <button
+    style="margin-left: 7px;"
+    mat-raised-button
+    (click)="exporter.exportTable('txt', exportConfig)"
+  >
+    Exportar Hoja de Texto
+  </button>
 </div>

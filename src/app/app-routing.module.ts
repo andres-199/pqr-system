@@ -38,6 +38,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then(res => res.LoginModule),
     canActivate: [LogoutGuard]
+  },
+  {
+    path: 'contratos',
+    loadChildren: () =>
+      import('./contratos/contratos.module').then(res => res.ContratosModule),
+    canActivate: [LoginGuard]
   }
 ]
 

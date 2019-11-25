@@ -6,6 +6,12 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatTableDataSource } from '@angular/material/table'
 import { MatPaginator } from '@angular/material/paginator'
 
+export const Export_Config = {
+  fileName: 'pqr_system_file_export',
+  sheet: 'datos',
+  Props: { Author: 'andres199' }
+}
+
 export interface Col {
   header: string
   field: string
@@ -14,7 +20,8 @@ export interface Col {
 export interface FormField {
   name: string
   label: string
-  type?: 'text' | 'textArea'
+  type?: 'text' | 'textArea' | 'dropdown' | 'date' | 'file' | 'number'
+  options?: any
 }
 
 export interface MenuOption {
@@ -43,6 +50,7 @@ export class DinamycCrudComponent implements OnInit {
   public menuOptions: MenuOption[]
 
   public dataSource: any
+  public exportConfig = Export_Config
 
   @ViewChild(MatPaginator, { static: true })
   private paginator: MatPaginator
