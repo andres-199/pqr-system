@@ -1,0 +1,46 @@
+.container-fluid {
+  height: 100%;
+  background-color: transparent;
+}
+
+.row {
+  height: 100%;
+}
+.col {
+  background-image: url('/assets/img/background.jpg');
+  height: 100%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-panel {
+  width: 350px;
+  float: right;
+  top: 33%;
+  right: 4%;
+  position: relative;
+  background-color: #fafafa85;
+  text-align: center;
+  box-shadow: 7px 7px 17px -10px rgba(237, 50, 55, 1);
+}
+
+.input {
+  width: 75%;
+}
+
+.header-image {
+  position: relative;
+  margin-bottom: -55px;
+  width: 175px;
+  height: 100px;
+  top: -65px;
+}
+.header {
+  text-align: center;
+  width: 100%;
+}
+
+.submit-button {
+  padding: 27px;
+}

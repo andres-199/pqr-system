@@ -38,6 +38,8 @@ export class DinamycCrudComponent implements OnInit {
   @Input()
   public origin = ''
   @Input()
+  public originForm = undefined
+  @Input()
   public menuOptions: MenuOption[]
 
   public dataSource: any
@@ -102,7 +104,8 @@ export class DinamycCrudComponent implements OnInit {
   }
 
   private update(data) {
-    this.service.update(this.origin, data).subscribe(
+    const origin = this.originForm || this.origin
+    this.service.update(origin, data).subscribe(
       res => {
         this.onSuccess(false)
       },
@@ -113,7 +116,8 @@ export class DinamycCrudComponent implements OnInit {
   }
 
   private create(data) {
-    this.service.create(this.origin, data).subscribe(
+    const origin = this.originForm || this.origin
+    this.service.create(origin, data).subscribe(
       res => {
         this.getDataSource()
         this.onSuccess()

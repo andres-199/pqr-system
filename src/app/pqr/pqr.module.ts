@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { Routes, RouterModule } from '@angular/router'
+import { PqrService } from './pqr.service'
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)]
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  providers: [PqrService]
 })
 export class PqrModule {}

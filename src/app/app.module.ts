@@ -9,6 +9,8 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MenuModule } from './components/menu/menu.module'
 import { HttpClientModule } from '@angular/common/http'
 import { FooterModule } from './components/footer/footer.module'
+import { MatIconModule } from '@angular/material/icon'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,9 @@ import { FooterModule } from './components/footer/footer.module'
     MatSidenavModule,
     MenuModule,
     HttpClientModule,
-    FooterModule
+    FooterModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,26 @@
-<!--Toolbar-->
-<mat-toolbar color="primary">{{ title | uppercase }}</mat-toolbar>
+<ng-container *ngIf="iLoaded">
+  <!--Toolbar-->
+  <mat-toolbar color="primary" *ngIf="!hide">
+    <span>{{ title | uppercase }}</span>
+    <mat-icon
+      style="margin-left: auto; font-size: 30px;margin-right: 1%;"
+      matTooltip="Salir"
+      (click)="onExit()"
+    >
+      exit_to_app
+    </mat-icon>
+  </mat-toolbar>
 
-<mat-sidenav-container class="main-container">
-  <!--Side Content-->
-  <mat-sidenav mode="side" opened>
-    <app-menu></app-menu>
-  </mat-sidenav>
+  <mat-sidenav-container class="main-container">
+    <!--Side Content-->
+    <mat-sidenav mode="side" opened *ngIf="!hide">
+      <app-menu></app-menu>
+    </mat-sidenav>
 
-  <!--Content-->
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <!--Content-->
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+      <app-footer *ngIf="!hide"></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>

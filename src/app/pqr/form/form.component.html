@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>REGISTRO DE PQR</h1>
+
+<div mat-dialog-content>
+  <ng-container *ngIf="!isDelete; else is_delete">
+    <div>
+      <ng-container
+        *ngTemplateOutlet="
+          dropdown;
+          context: {
+            $implicit: { name: 'campo_id', label: 'Campo', options: campos }
+          }
+        "
+      ></ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<!--actions-->
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button (click)="onaccept()" cdkFocusInitial>Aceptar</button>
+</div>
+
+<!--templates-->
+<ng-template #input let-field>
+  <mat-form-field class="full-width">
+    <input
+      matInput
+      [name]="field.name"
+      [(ngModel)]="pqr[field.name]"
+      [placeholder]="field.label"
+    />
+  </mat-form-field>
+</ng-template>
+
+<ng-template #textArea let-field>
+  <mat-form-field class="full-width">
+    <textarea
+      matInput
+      [name]="field.name"
+      [(ngModel)]="pqr[field.name]"
+      [placeholder]="field.label"
+    ></textarea>
+  </mat-form-field>
+</ng-template>
+
+<ng-template #dropdown let-field>
+  <mat-form-field class="full-width">
+    <mat-label>{{ field.label }}</mat-label>
+    <mat-select [name]="field.name" [(ngModel)]="pqr[field.name]">
+      <mat-option *ngFor="let option of field.options" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-template>

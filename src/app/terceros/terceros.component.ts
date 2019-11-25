@@ -17,6 +17,7 @@ export class TercerosComponent implements OnInit {
     'codigo',
     'nombres',
     'apellidos',
+    'cargo',
     'correo',
     'telefono',
     'opciones'
@@ -25,6 +26,7 @@ export class TercerosComponent implements OnInit {
   public cols: Col[] = [
     { header: 'CÓDIGO', field: 'codigo' },
     { header: 'NOMBRES', field: 'nombres' },
+    { header: 'CARGO', field: 'cargo' },
     { header: 'APELLIDOS', field: 'apellidos' },
     { header: 'CORREO', field: 'correo' },
     { header: 'TELEFONO', field: 'telefono' }
@@ -33,11 +35,13 @@ export class TercerosComponent implements OnInit {
   public formFields: FormField[] = [
     { name: 'nombres', label: 'Nombres' },
     { name: 'apellidos', label: 'Apellidos' },
+    { name: 'cargo', label: 'Cargo' },
     { name: 'correo', label: 'Correo' },
     { name: 'telefono', label: 'Telefono' }
   ]
 
   public origin = 'profesionales/crud'
+  public originForm = 'profesionales'
 
   public menuOptions: MenuOption[] = [
     {

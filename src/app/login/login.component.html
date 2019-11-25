@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <mat-card class="login-panel">
+        <div class="header">
+          <img src="/assets/img/imagen corporativa.png" class="header-image" />
+          <mat-card-title>PQR SYSTEM</mat-card-title>
+        </div>
+
+        <mat-form-field style="margin-top: 27px;" class="input">
+          <input
+            matInput
+            name="username"
+            type="text"
+            [(ngModel)]="username"
+            placeholder="Nombre de Usuario"
+          />
+        </mat-form-field>
+        <mat-form-field class="input">
+          <input
+            matInput
+            name="password"
+            type="password"
+            [(ngModel)]="password"
+            placeholder="Contraseña"
+          />
+        </mat-form-field>
+        <div class="row-inner submit-button">
+          <button
+            style="width: 100%;"
+            mat-raised-button
+            color="primary"
+            (click)="onLogin()"
+          >
+            Iniciar Sesión
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
